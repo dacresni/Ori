@@ -11,4 +11,14 @@ ApplicationWindow {
         text: "Push Me"
         anchors.centerIn: parent
     }
+    Page {
+        anchors.fill: parent
+        header: Label {
+            padding: 10
+            text: qsTr("Contacts")
+            font.pixelSize: 20
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+        }
+    }
 }
