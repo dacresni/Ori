@@ -4,12 +4,18 @@ project(Ori VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_AUTOMOC ON)
+find_package(Qt6 6.2 COMPONENTS Quick Gui REQUIRED )
+# qt_standard_project_setup()
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
-qt_standard_project_setup()
-
-add_executable(Ori
+qt_add_executable(Ori
     main.cpp
 )
 
-target_link_libraries(helloworld PRIVATE Qt6::Core)
+qt_add_qml_module(Ori
+    URI hello
+    VERSION 1.0
+    QML_FILES
+        main.qml
+)
+target_link_libraries(Ori PRIVATE Qt6::Gui Qt6::Quick)
