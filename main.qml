@@ -7,18 +7,10 @@ ApplicationWindow {
     height: 480
     visible: true
 
-    Button {
-        text: "Push Me"
-        anchors.centerIn: parent
-    }
-    Page {
+    StackView {
+        id: stackView
         anchors.fill: parent
-        header: Label {
-            padding: 10
-            text: qsTr("Contacts")
-            font.pixelSize: 20
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-        }
+        initialItem: ConnectionsPage {}
     }
+
 }

@@ -17,5 +17,7 @@ qt_add_qml_module(Ori
     VERSION 1.0
     QML_FILES
         main.qml
+        ConnectionsPage.qml
+
 )
 target_link_libraries(Ori PRIVATE Qt6::Gui Qt6::Quick)
