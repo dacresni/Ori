@@ -21,13 +21,13 @@ function dbGetHandle()
     return db
 }
 
-function dbInsert(Pdate, Pdesc, Pdistance)
+function dbInsert(name, hostname, port, created )
 {
     var db = dbGetHandle()
     var rowid = 0;
     db.transaction(function (tx) {
-        tx.executeSql('INSERT INTO trip_log VALUES(?, ?, ?)',
-                      [Pdate, Pdesc, Pdistance])
+        tx.executeSql('INSERT INTO connections VALUES(?, ?, ?)',
+                      [ name, hostname, port, created ])
         var result = tx.executeSql('SELECT last_insert_rowid()')
         rowid = result.insertId
     })
@@ -39,7 +39,7 @@ function dbReadAll()
     var db = dbGetHandle()
     db.transaction(function (tx) {
         var results = tx.executeSql(
-                    'SELECT rowid,date,trip_desc,distance FROM trip_log order by rowid desc')
+                    'SELECT rowid,date,trip_desc,distance FROM connections order by rowid desc')
         for (var i = 0; i < results.rows.length; i++) {
             listModel.append({
                                  id: results.rows.item(i).rowid,
@@ -57,7 +57,7 @@ function dbUpdate(Pdate, Pdesc, Pdistance, Prowid)
     var db = dbGetHandle()
     db.transaction(function (tx) {
         tx.executeSql(
-                    'update trip_log set date=?, trip_desc=?, distance=? where rowid = ?', [Pdate, Pdesc, Pdistance, Prowid])
+                    'update connections set date=?, trip_desc=?, distance=? where rowid = ?', [Pdate, Pdesc, Pdistance, Prowid])
     })
 }
 
@@ -65,6 +65,6 @@ function dbDeleteRow(Prowid)
 {
     var db = dbGetHandle()
     db.transaction(function (tx) {
-        tx.executeSql('delete from trip_log where rowid = ?', [Prowid])
+        tx.executeSql('delete from connections where rowid = ?', [Prowid])
     })
 }

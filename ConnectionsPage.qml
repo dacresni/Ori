@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.LocalStorage as Sql
 import "Database.js" as SettingsStore
+
 Page {
     anchors.fill: parent
     header: ToolBar {
