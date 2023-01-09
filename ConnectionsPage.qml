@@ -39,6 +39,5 @@ Page {
     ListModel {
         id: listModel
         Component.onCompleted: SettingsStore.readAll()
-        }
     }
 }

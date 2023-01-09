@@ -26,7 +26,7 @@ function dbInsert(name, hostname, port, created )
     var db = dbGetHandle()
     var rowid = 0;
     db.transaction(function (tx) {
-        tx.executeSql('INSERT INTO connections VALUES(?, ?, ?)',
+        tx.executeSql('INSERT INTO connections VALUES(?, ?, ?, ?)',
                       [ name, hostname, port, created ])
         var result = tx.executeSql('SELECT last_insert_rowid()')
         rowid = result.insertId
