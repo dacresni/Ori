@@ -15,6 +15,17 @@ Page {
           verticalAlignment: Text.AlignVCenter
       }
     }
+		RowLayout {
+                Button {
+                    text: qsTr("New")
+                    onClicked: {
+                        input.initrec_new()
+                        window.creatingNewEntry = true
+                        listView.model.setProperty(listView.currentIndex, "id", 0)
+                    }
+                }
+		 }
+
     ListView {
         id: listView
         anchors.fill: parent
@@ -23,7 +34,8 @@ Page {
         bottomMargin: 48
         rightMargin: 48
         spacing: 20
-        model: ["Albert Einstein", "Ernest Hemingway", "Hans Gude"]
+        model: [ 'list']
+        //model: listModel 
         delegate: ItemDelegate {
             text: modelData
             width: listView.width - listView.leftMargin - listView.rightMargin
